@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Nolita.Controllers
 {
-    public class HomeController : Controller
+    public class LinksController : Controller
     {
         private readonly AppSettings _appSettings;
 
-        public HomeController(IOptions<AppSettings> AppSettings)
+        public LinksController(IOptions<AppSettings> AppSettings)
         {
             _appSettings = AppSettings.Value;
         }
