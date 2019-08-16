@@ -36,7 +36,6 @@ namespace Nolita
                 var doc = Toml.Parse(definedLinks);
 
                 var tables = doc.Tables;
-
                 foreach (var table in tables)
                 {
                     var items = table.Items;

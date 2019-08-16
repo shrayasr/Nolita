@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Nolita.Models;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -7,6 +8,12 @@ namespace Nolita.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AppSettings _appSettings;
+
+        public HomeController(IOptions<AppSettings> AppSettings)
+        {
+            _appSettings = AppSettings.Value;
+        }
 
         [Route("~/")]
         public IActionResult Index()
@@ -30,10 +37,27 @@ namespace Nolita.Controllers
         }
 
         [Route("~/reload")]
-        public async Task<IActionResult> ReloadLinks()
+        public async Task<IActionResult> ReloadLinks(string key)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                return Unauthorized(new
+                {
+                    Error = "No Key"
+                });
+            }
+
+            if (key != _appSettings.SecretKey)
+            {
+                return Unauthorized(new
+                {
+                    Error = "Invalid Key"
+                });
+            }
+
             await LinkLoader.ReloadLinksFromGist();
-            return Json(new { Done = true });
+
+            return Json(LinkLoader.Links);
         }
 
         [Route("~/edit")]
