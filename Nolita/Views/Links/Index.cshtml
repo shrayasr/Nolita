@@ -1,0 +1,23 @@
+﻿@using System.Collections.Concurrent
+@model ConcurrentDictionary<string, ConcurrentDictionary<string, string>>
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+        @foreach (var groupLinks in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title mb-0">@groupLinks.Key</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    @foreach (var link in groupLinks.Value)
+                    {
+                        <a target="_blank" class="list-group-item" href="@link.Value">
+                            @link.Key
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -18,7 +18,7 @@ namespace Nolita.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            return Json(LinkLoader.Links);
+            return View(LinkLoader.GroupedLinks);
         }
 
         [Route("~/{slug}")]
@@ -57,7 +57,7 @@ namespace Nolita.Controllers
 
             await LinkLoader.ReloadLinksFromGist();
 
-            return Json(LinkLoader.Links);
+            return Redirect("/");
         }
 
         [Route("~/edit")]

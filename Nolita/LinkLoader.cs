@@ -11,6 +11,9 @@ namespace Nolita
     {
         public static readonly ConcurrentDictionary<string, string> Links = new ConcurrentDictionary<string, string>();
 
+        public static readonly ConcurrentDictionary<string, ConcurrentDictionary<string, string>> GroupedLinks
+            = new ConcurrentDictionary<string, ConcurrentDictionary<string, string>>();
+
         public static async Task ReloadLinksFromGist()
         {
             Links.Clear();
@@ -38,6 +41,9 @@ namespace Nolita
                 var tables = doc.Tables;
                 foreach (var table in tables)
                 {
+                    var groupName = table.Name.ToString().Trim();
+                    var groupContents = new ConcurrentDictionary<string, string>();
+
                     var items = table.Items;
                     foreach (var item in items)
                     {
@@ -45,7 +51,10 @@ namespace Nolita
                         var link = item.Value.ToString().Trim().Replace("'", "");
 
                         Links[slug] = link;
+                        groupContents[slug] = link;
                     }
+
+                    GroupedLinks[groupName] = groupContents;
                 }
             }
         }
