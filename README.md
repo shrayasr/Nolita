@@ -22,11 +22,11 @@ Gist Syntax:
 - Keys are the short links. They **must** be hypen separated (kebab case)
 
         [SideProjects]
-        notion-links = 
+        nolita = 
 
 - Values will be the actual link itself
 
         [SideProjects]
-        notion-links = https://www.notion.so/shrayasr/notion-shrayas-com-9534bed0b89340bf9248d17f75c4eeb7
+        nolita = https://www.notion.so/shrayasr/notion-shrayas-com-9534bed0b89340bf9248d17f75c4eeb7
 
 - This would mean [notes.shrayas.com/nolita](http://notes.shrayas.com/nolita) would link to [this page](https://www.notion.so/shrayasr/notion-shrayas-com-9534bed0b89340bf9248d17f75c4eeb7)
