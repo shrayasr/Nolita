@@ -2,31 +2,30 @@
 
 ## Problem
 
-Notion has really horrible share links that are:
-
-1. Not memorizable
-2. Not communicate able 
+- Long links are hard to remember
+- Bad links are hard to remember
+- Links are hard to share
 
 ## Solution
 
-- A link redirection thingie that works off a publicly maintained file on [gist.github.com](http://gist.github.com) written in [TOML](https://github.com/toml-lang/toml)
+- Create your own new links ¯\_(ツ)_/¯
 
-### Spec
+## Implementation
 
-Gist Syntax:
+- Nolita works off using a gist file (private or public) as its repository of links
+- The file is to be written in the [TOML](https://github.com/toml-lang/toml) format 
+- Links can be subdivided into sections using tables
 
-- Group using tables
+## Caveats
 
-        [SideProjects]
+- The file **has** to be named `links.toml` 
 
-- Keys are the short links. They **must** be hypen separated (kebab case)
+## Running it
 
-        [SideProjects]
-        nolita = 
-
-- Values will be the actual link itself
-
-        [SideProjects]
-        nolita = https://www.notion.so/shrayasr/notion-shrayas-com-9534bed0b89340bf9248d17f75c4eeb7
-
-- This would mean [notes.shrayas.com/nolita](http://notes.shrayas.com/nolita) would link to [this page](https://www.notion.so/shrayasr/notion-shrayas-com-9534bed0b89340bf9248d17f75c4eeb7)
+- Clone the project
+- Build it
+- [Publish it](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli) using any method of your choice
+  - If you plan on having other dotnet core apps on the same box, I recommend a framework dependent deployable
+  - If this would be your only dotnet core app, I recommend a self contained deployable
+- [Host your service](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/?view=aspnetcore-2.2)
+- Set your DNS entries to point to the box where the service is hosted
