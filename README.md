@@ -14,7 +14,16 @@
 
 - Nolita works off using a gist file (private or public) as its repository of links
 - The file is to be written in the [TOML](https://github.com/toml-lang/toml) format 
-- Links can be subdivided into sections using tables
+- Each link is defined as a [key value pair](https://github.com/toml-lang/toml#user-content-keyvalue-pair). Remember to quote all links
+    ```toml
+    pinboard = 'https://pinboard.in/u:shrayasr'
+    ```
+- Links can be subdivided into sections using [tables](https://github.com/toml-lang/toml#table)
+    ```toml
+    [Travel]
+    valparai = '...'
+    goa = '...'
+    ```
 
 ## Caveats
 
