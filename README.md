@@ -8,7 +8,7 @@
 
 ## Solution
 
-- Create your own new links ¯\_(ツ)_/¯
+- Create your own new links `¯\_(ツ)_/¯`
 
 ## Implementation
 
