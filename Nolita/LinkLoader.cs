@@ -20,9 +20,9 @@ namespace Nolita
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Add("User-Agent", Constants.USER_AGENT);
+                httpClient.DefaultRequestHeaders.Add("User-Agent", Constants.UserAgent);
 
-                var response = await httpClient.GetAsync(Constants.API_GIST_URL);
+                var response = await httpClient.GetAsync(Constants.APIGistURL);
                 var content = await response.Content.ReadAsStringAsync();
 
                 var definedLinks = JsonConvert
@@ -33,7 +33,7 @@ namespace Nolita
 
                 if (definedLinks == null)
                 {
-                    throw new Exception("No content at that URL");
+                    throw new Exception("No content at that URL. Are you sure you have a file called `links.toml` in the gist?");
                 }
 
                 var doc = Toml.Parse(definedLinks);

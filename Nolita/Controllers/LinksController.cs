@@ -63,7 +63,7 @@ namespace Nolita.Controllers
         [Route("~/edit")]
         public IActionResult EditLinks()
         {
-            return Redirect(Constants.EDIT_GIST_URL);
+            return Redirect(Constants.EditGistURL);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

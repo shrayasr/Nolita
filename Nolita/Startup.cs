@@ -18,6 +18,13 @@ namespace Nolita
             {
                 throw new InvalidOperationException("Secret key can't be empty");
             }
+
+            if (string.IsNullOrEmpty(Configuration["GistID"]))
+            {
+                throw new InvalidOperationException("Gist ID can't be empty");
+            }
+
+            Constants.GistID = Configuration["GistID"];
         }
 
         public IConfiguration Configuration { get; }
