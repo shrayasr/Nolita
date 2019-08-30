@@ -1,5 +1,7 @@
 # Nolita
 
+> Yet another link redirection program
+
 ## Problem
 
 - Long links are hard to remember
